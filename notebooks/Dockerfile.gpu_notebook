@@ -31,4 +31,5 @@ RUN pip3 install accelerate transformers==4.33.1 --upgrade
 EXPOSE 8888
 
 # Start JupyterLab when the container runs
-CMD ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0","--NotebookApp.token=''", "--port=8888"]
+# Additionally disable XSRF check that fails when running remotely on Taiga instances
+CMD ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0","--NotebookApp.token=''", "--port=8888", "--ServerApp.disable_check_xsrf=True"]

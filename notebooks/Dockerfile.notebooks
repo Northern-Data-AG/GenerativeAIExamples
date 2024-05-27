@@ -28,4 +28,5 @@ RUN apt-get update && apt-get install -y unzip wget git libgl1-mesa-glx libglib2
 EXPOSE 8888
 
 # Start JupyterLab when the container runs
-CMD ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0","--NotebookApp.token=''", "--port=8888"]
+# Additionally disable XSRF check that fails when running remotely on Taiga instances
+CMD ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0","--NotebookApp.token=''", "--port=8888", "--ServerApp.disable_check_xsrf=True"]
